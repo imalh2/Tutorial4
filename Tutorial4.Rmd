@@ -7,4 +7,35 @@ output:
 keep_md: true
 ---
 
-We have learning referencing.
+```{r global, include = FALSE}
+knitr::opts_chunk$set(fig.align = 'center')
+```
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+# Learning to reference figures {#figures}
+
+```{r FigRef, fig.cap="This is a line plot"}
+x = seq(1:100)
+y = rnorm(100)
+dat = data.frame(x, y)
+ggplot(dat, aes(x = x, y = y)) +
+geom_line()
+```
+
+In Figure \@ref(fig:FigRef), we have plot x versus y.
+
+# Learning to reference tables {#tables}
+
+In Table \@ref(tab:TabRef), we have shown the first five rows of the data
+
+```{r TabRef}
+head(dat, 5) %>% 
+  knitr::kable(caption = "First five rows of the data")
+```
+
+# Learning to reference sections
+
+In Section \@ref(figures), we plot a figure. While in section \@ref(tables), we produce a table.
